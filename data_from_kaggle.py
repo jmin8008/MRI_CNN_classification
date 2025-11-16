@@ -6,6 +6,8 @@ import os
 # 기본 데이터 디렉토리를 정의합니다.
 main_data_dir = '/home/JGY/mri_cnn/data'
 
+
+# temporary code for downloading datasets -------------------------------------------------------------
 '''
 # --- 데이터셋 1 ---
 print("Processing 'navoneel/brain-mri-images-for-brain-tumor-detection'...")
@@ -39,7 +41,9 @@ print('\nData source import complete.')
 '''
 
 
-# Larger dataset
+# Larger dataset----------------------------------------------------------------------------------------
+# our main dataset 
+'''
 print("\nProcessing ...")
 
 cached_path_3 = kagglehub.dataset_download("masoudnickparvar/brain-tumor-mri-dataset")
@@ -53,3 +57,22 @@ shutil.move(cached_path_3, dest_path_3)
 print(f"Dataset 2 moved to: {dest_path_3}")
 
 print('\nData source import complete.')
+'''
+
+# segmentation dataset ---------------------------------------------------------------------------------
+print("\nProcessing ...")
+
+cached_path_4 = kagglehub.dataset_download("briscdataset/brisc2025")
+dest_path_4 = os.path.join(main_data_dir, 'segmentation_Dataset')
+
+if os.path.exists(dest_path_4):
+    shutil.rmtree(dest_path_4)
+
+shutil.move(cached_path_4, dest_path_4)
+print(f"Dataset 2 moved to: {dest_path_4}")
+
+print('\nData source import complete.')
+
+
+
+
